@@ -323,10 +323,14 @@ public class Main {
                 while (isRunning) {
                     display.syncExec(() -> {
                         try {
-                        	if(count < 40) {
-                        		String str = shell.getText();
-                            	shell.setText(" " + str);
-                            	count++;
+                        	if(count < 45) {
+                        		if (!shell.isDisposed()) {
+                        			String str = shell.getText();
+                                	shell.setText(" " + str);
+                                	count++;
+                        		} else {
+                        			return;
+                        		}	
                         	}
                         	else {
                         		count = 0;
